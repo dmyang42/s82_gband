@@ -1,0 +1,28 @@
+- s82_gband.py 读取s82/dr7的信息，输出s82_*文件，*可以为all=所有，tar=剧烈光变，oth=其他，rnd=随机抽取（与剧烈光变数目相当）
+
+$ python s82_gband.py * > s82_*
+
+- random_test.py 比较s82_all与s82_rnd，进行ks检验，输出z/L/M的检验结果
+
+$ python s82_gband.py rnd > s82_rnd
+$ python random_test.py >> ks_test_result
+
+- zlm_plot.py 供以下三个脚本调用
+
+- z_plot.py 绘制z的柱状图
+
+$ python z_plot.py *
+
+- L_plot.py 绘制L的柱状图
+
+$ python L_plot.py *
+
+- M_plot.py 绘制M的柱状图
+
+$ python M_plot.py *
+
+- gen.py 从s82_oth中选出一部分组成s82_ftr，使其分布与s82_tar相近，标准是z/L/M的ks检验结果pvalue小于0.05。会给出两个文件，s82_ftr会筛选剩下的源的z/L/M（将来把序号也写入即可），gen.log会给出筛选中间过程，可以看到pvalue和剩余样本数的变化
+
+$ python gen.py *（此处*表示要求的pvalue，建议取0.05或0.1）
+
+结果都移至了/plot_result及/result文件夹中
